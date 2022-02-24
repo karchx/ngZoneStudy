@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbActionsModule, NbSidebarService, NbCardModule, NbListModule, NbUserModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
@@ -16,10 +16,17 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
+    NbCardModule,
     NbLayoutModule,
-    NbEvaIconsModule
+    NbListModule,
+    NbUserModule,
+    NbEvaIconsModule,
+    NbSidebarModule,
+    NbActionsModule
   ],
-  providers: [],
+  providers: [
+    NbSidebarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
