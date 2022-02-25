@@ -6,21 +6,23 @@
 		<h1 class="ml-4">ZNStudy</h1>
 	</nb-layout-header>
 	<nb-layout-header subheader>
-    		<nb-actions>
-      			<nb-action icon="home-outline"></nb-action>
-      			<nb-action icon="plus-outline"></nb-action>
-      			<nb-action icon="edit-outline"></nb-action>
-    		</nb-actions>
+		<button nbButton status="primary" (click)="open()">
+			<nb-icon icon="plus-outline"></nb-icon>
+		</button>
   	</nb-layout-header>
 
   	<nb-sidebar>
-		<nb-card size="small">
-			<nb-list>
-				<nb-list-item *ngFor="let s of salas">
-					<nb-user [name]="s.name"></nb-user>
+			<nb-list *ngFor="let s of salas">
+				<nb-list-item>
+					<div>
+						<p>
+							{{ s.name }}<strong class="ml-4">{{ s.tiempo }}</strong> 
+							<nb-icon icon="clock-outline" class="mt-2"></nb-icon>
+						</p>
+						<p>Participantes: {{ s.participantes }} <nb-icon icon="person-outline" class="ml-4"></nb-icon></p>
+					</div>
 				</nb-list-item>
 			</nb-list>
-		</nb-card>
 	</nb-sidebar>
 
   	<nb-layout-column class="colored-column-basic">Layout Content</nb-layout-column>

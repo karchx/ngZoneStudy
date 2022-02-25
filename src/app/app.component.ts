@@ -16,10 +16,14 @@ export class AppComponent {
 	  { name: "CC", tiempo: "1h", participantes:1 },
 	  { name: "Fisica", tiempo: "8h", participantes:2 },
 	  { name: "Tecnicas", tiempo: "2h", participantes:8 },
-  ]
+  ];
 
   toggle() {
     this.sidebarService.toggle(true);
     return false;
+  }
+  
+  open() {
+	  console.log("yes")
   }
 }
