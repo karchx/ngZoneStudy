@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NbSidebarService } from '@nebular/theme';
+import { 
+	NbSidebarService,
+	NbDialogService,
+} from '@nebular/theme';
+import { NewsalasComponent } from './component/newsalas/newsalas.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +13,7 @@ import { NbSidebarService } from '@nebular/theme';
 export class AppComponent {
   title = 'ngZoneStudy';
 
-  constructor(private sidebarService: NbSidebarService){}
+  constructor(private sidebarService: NbSidebarService, private dialogService: NbDialogService){}
 
   salas: { name:string, tiempo:string, participantes:number }[] = [
 	  { name: "Matematicas", tiempo: "4h", participantes:4 },
@@ -24,6 +28,10 @@ export class AppComponent {
   }
   
   open() {
-	  console.log("yes")
+		this.dialogService.open(NewsalasComponent, {
+			context: {
+				title: 'NEW'
+			}
+		})
   }
 }

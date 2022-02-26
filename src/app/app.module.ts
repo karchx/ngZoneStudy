@@ -4,29 +4,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { 
+import {
+	NbDialogModule,
 	NbThemeModule, 
 	NbLayoutModule, 
 	NbSidebarModule, 
 	NbActionsModule, 
-	NbSidebarService, 
 	NbCardModule, 
 	NbListModule,
 	NbIconModule,
 	NbMenuModule,
-	NbButtonModule
+	NbButtonModule,
+	NbSidebarService, 
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NewsalasComponent } from './component/newsalas/newsalas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewsalasComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
+		NbDialogModule.forRoot(),
     NbButtonModule,
     NbCardModule,
     NbLayoutModule,
@@ -38,7 +42,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbMenuModule
   ],
   providers: [
-    NbSidebarService
+    NbSidebarService,
   ],
   bootstrap: [AppComponent]
 })
