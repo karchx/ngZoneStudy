@@ -16,10 +16,15 @@
 				<nb-list-item>
 					<div>
 						<p>
-							{{ s.name }}<strong class="ml-4">{{ s.tiempo }}</strong> 
+							{{ s.name }}<strong class="ml-4">{{ s.time }}h</strong> 
 							<nb-icon icon="clock-outline" class="mt-2"></nb-icon>
 						</p>
 						<p>Participantes: {{ s.participantes }} <nb-icon icon="person-outline" class="ml-4"></nb-icon></p>
+
+						<br/>
+	
+						<button nbButton status="info" (click)="join(s.id)">Unirse</button>
+
 					</div>
 				</nb-list-item>
 			</nb-list>

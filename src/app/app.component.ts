@@ -5,6 +5,13 @@ import {
 } from '@nebular/theme';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
 
+interface ISalas {
+	id: number;
+	name:string;
+	time:string;
+	participantes:number;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,12 +22,7 @@ export class AppComponent {
 
   constructor(private sidebarService: NbSidebarService, private dialogService: NbDialogService){}
 
-  salas: { name:string, tiempo:string, participantes:number }[] = [
-	  { name: "Matematicas", tiempo: "4h", participantes:4 },
-	  { name: "CC", tiempo: "1h", participantes:1 },
-	  { name: "Fisica", tiempo: "8h", participantes:2 },
-	  { name: "Tecnicas", tiempo: "2h", participantes:8 },
-  ];
+  salas: Array<ISalas>= [];
 
   toggle() {
     this.sidebarService.toggle(true);
@@ -28,10 +30,23 @@ export class AppComponent {
   }
   
   open() {
-		this.dialogService.open(NewsalasComponent, {
-			context: {
-				title: 'NEW'
+	this.dialogService.open(NewsalasComponent)
+		.onClose.subscribe({
+			next: (r) => {
+				if(r) {
+					const newSala: ISalas = {
+						id: Math.trunc(Math.random() * 10),
+						...r,
+						participantes: 1,
+					}
+					this.salas.push(newSala);
+				}
 			}
-		})
+		});
   }
+
+	join(id:number) {
+		this.salas.filter(s => s.id === id)
+			.map(s => s.participantes++)
+	}
 }

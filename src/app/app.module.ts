@@ -15,7 +15,8 @@ import {
 	NbIconModule,
 	NbMenuModule,
 	NbButtonModule,
-	NbSidebarService, 
+	NbSidebarService,
+	NbInputModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
@@ -39,7 +40,8 @@ import { NewsalasComponent } from './component/newsalas/newsalas.component';
     NbSidebarModule,
     NbIconModule,
     NbActionsModule,
-    NbMenuModule
+    NbMenuModule,
+		NbInputModule,
   ],
   providers: [
     NbSidebarService,

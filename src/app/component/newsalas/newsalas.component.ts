@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'app-newsalas',
   templateUrl: './newsalas.component.html',
   styleUrls: ['./newsalas.component.scss']
 })
-export class NewsalasComponent implements OnInit {
-	title:string = '';
+export class NewsalasComponent  {
+  constructor(protected dialogRef: NbDialogRef<NewsalasComponent>) { }
 
-  constructor() { }
+	cancel() {
+		this.dialogRef.close();
+	}
 
-  ngOnInit(): void {
-  }
+	submit(name:string, time: string) {
+		this.dialogRef.close({name, time});
+	}
 
 }
