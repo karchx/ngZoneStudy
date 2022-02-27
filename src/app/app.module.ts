@@ -20,11 +20,15 @@ import {
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
+import { JoinsalasComponent } from './component/joinsalas/joinsalas.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsalasComponent,
+    JoinsalasComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { 
 	NbSidebarService,
 	NbDialogService,
 } from '@nebular/theme';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
 
-interface ISalas {
-	id: number;
-	name:string;
-	time:string;
-	participantes:number;
-}
+import { salas, ISalas } from '../utils/salasdb';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +16,12 @@ interface ISalas {
 export class AppComponent {
   title = 'ngZoneStudy';
 
-  constructor(private sidebarService: NbSidebarService, private dialogService: NbDialogService){}
+  constructor(
+	private sidebarService: NbSidebarService, 
+	private dialogService: NbDialogService,
+	private router: Router){}
 
-  salas: Array<ISalas>= [];
+	public salas = salas;
 
   toggle() {
     this.sidebarService.toggle(true);
@@ -48,5 +47,7 @@ export class AppComponent {
 	join(id:number) {
 		this.salas.filter(s => s.id === id)
 			.map(s => s.participantes++)
+
+		this.router.navigate(['join/', id]);
 	}
 }
