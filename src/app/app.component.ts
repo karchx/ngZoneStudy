@@ -15,7 +15,7 @@ import { ViewthemeComponent } from './component/viewtheme/viewtheme.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngZoneStudy';
+  title = 'STUDYSPACE';
 
   constructor(
 	private sidebarService: NbSidebarService, 
