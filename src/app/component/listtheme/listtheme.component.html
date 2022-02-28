@@ -1,0 +1,21 @@
+<nb-card>
+	<nb-card-header>
+		Crear lista de temas
+	</nb-card-header>
+
+	<nb-card-body class="items-col">
+		<input 
+			nbInput 
+			fullWidth 
+			status="primary" 
+			fieldSize="medium"
+			type="text" 
+			placeholder="Tema" 
+			#tema/>
+	</nb-card-body>
+
+	<nb-card-footer class="btn-group">
+		<button nbButton status="danger" (click)="cancel()">Cancelar</button>
+		<button nbButton status="success" (click)="submit(tema.value)" style="margin-left: 10px;">Crear</button>
+	</nb-card-footer>
+</nb-card>

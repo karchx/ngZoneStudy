@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { 
 	NbSidebarService,
 	NbDialogService,
 } from '@nebular/theme';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
 
-import { salas, ISalas } from '../utils/salasdb';
+import { salas, temas, ISalas, ITemas } from '../utils/salasdb';
+import { ListthemeComponent } from './component/listtheme/listtheme.component';
+import { ViewthemeComponent } from './component/viewtheme/viewtheme.component';
 
 @Component({
   selector: 'app-root',
@@ -18,16 +19,18 @@ export class AppComponent {
 
   constructor(
 	private sidebarService: NbSidebarService, 
-	private dialogService: NbDialogService,
-	private router: Router){}
+	private dialogService: NbDialogService){}
 
+	// TODO: migrar a un service
 	public salas = salas;
+	public temas = temas;
 
   toggle() {
     this.sidebarService.toggle(true);
     return false;
   }
   
+	// TODO: migrar a un service
   open() {
 	this.dialogService.open(NewsalasComponent)
 		.onClose.subscribe({
@@ -39,15 +42,39 @@ export class AppComponent {
 						participantes: 1,
 					}
 					this.salas.push(newSala);
+					this.createListTheme(newSala.id);
 				}
 			}
 		});
   }
 
+	// TODO: migrar a un service
+	createListTheme (idsala:number){
+		this.dialogService.open(ListthemeComponent)
+			.onClose.subscribe({
+				next: (r) => {
+					const newTema: ITemas = {
+						id: Math.trunc(Math.random() * 1000),
+						tema: r,
+						idsala
+					};
+
+					this.temas.push(newTema);
+				}
+			});
+	}
+
 	join(id:number) {
 		this.salas.filter(s => s.id === id)
 			.map(s => s.participantes++)
+	}
 
-		this.router.navigate(['join/', id]);
+	viewTheme(id:number) {
+		this.dialogService.open(ViewthemeComponent, {
+			context: {
+				id
+			}
+		})
+			.onClose.subscribe();
 	}
 }

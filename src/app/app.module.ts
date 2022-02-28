@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import {
 	NbDialogModule,
 	NbThemeModule, 
@@ -22,6 +23,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NewsalasComponent } from './component/newsalas/newsalas.component';
 import { JoinsalasComponent } from './component/joinsalas/joinsalas.component';
 import { HomeComponent } from './component/home/home.component';
+import { ListthemeComponent } from './component/listtheme/listtheme.component';
+import { ViewthemeComponent } from './component/viewtheme/viewtheme.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,14 @@ import { HomeComponent } from './component/home/home.component';
     NewsalasComponent,
     JoinsalasComponent,
     HomeComponent,
+    ListthemeComponent,
+    ViewthemeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+		RouterModule,
     NbThemeModule.forRoot({ name: 'default' }),
 		NbDialogModule.forRoot(),
     NbButtonModule,

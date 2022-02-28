@@ -22,8 +22,9 @@
 						<p>Participantes: {{ s.participantes }} <nb-icon icon="person-outline" class="ml-4"></nb-icon></p>
 
 						<br/>
-	
-						<button nbButton status="info" (click)="join(s.id)">Unirse</button>
+
+						<a nbButton status="info" [routerLink]="['/join', s.id]" (click)="join(s.id)">Unirse</a>
+						<button nbButton status="info" (click)="viewTheme(s.id)" class="mt-2">Ver temario<nb-icon icon="eye-outline"></nb-icon></button>
 
 					</div>
 				</nb-list-item>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { salas } from '../../../utils/salasdb';
+import { ActivatedRoute } from '@angular/router';
+import { salas, ISalas, ITemas, temas } from '../../../utils/salasdb';
 
 @Component({
   selector: 'app-joinsalas',
@@ -8,12 +9,28 @@ import { salas } from '../../../utils/salasdb';
   ]
 })
 export class JoinsalasComponent implements OnInit {
-	public salas = salas;
+	private salas = salas;
+	private temas = temas;
+	public idSala:string = "";
+	public sala!: ISalas | undefined;
+	public theme: ITemas | undefined;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-		console.log(this.salas)
+		this.idSala = this.route.snapshot.paramMap.get('id') || '';
+		console.log(this.idSala);
+		this.getSala(this.idSala);
+		this.getTheme(this.idSala);
   }
+
+	getSala(id:string) {
+		this.sala = this.salas
+		.find(s => s.id === Number(id));
+	}
+
+	getTheme(idSala:string) {
+		this.theme = this.temas.find(s => s.idsala === Number(idSala));
+	}
 
 }
