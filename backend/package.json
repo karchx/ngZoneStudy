@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-	"type": "module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"start": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node src/index.js"
+    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4"
   }
 }
