@@ -14,5 +14,15 @@
   "dependencies": {
     "express": "^4.17.3",
     "mongoose": "^6.2.4"
-  }
+  },
+	"jest": {
+		"verbose": true,
+		"testURL": "http://localhost",
+		"testEnvironment": "node",
+		"setupTestFrameworkScriptFile": "<rootDir>/test-db-setup.js",
+		"testPathIgnorePatterns": [
+			"dist/"
+		],
+		"restoreMocks": true
+	}
 }
