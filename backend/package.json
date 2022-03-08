@@ -5,22 +5,45 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-		"build": "babel src --out-dir dist",
-		"test": "NODE_ENV=testing, jest --forceExit --detectOpenHandles --silent",
-		"test-routes": "yarn test -t router",
-		"test-models": "yarn test -t model",
-		"test-controller": "yarn test -t controllers",
-		"test-auth": "yarn test -t Authentication:",
-		"dev": "nodemon --exec yarn restart",
-		"restart": "rimraf dist && yarn build && yarn start",
+    "build": "babel src --out-dir dist",
+    "test": "NODE_ENV=testing, jest --forceExit --detectOpenHandles --silent",
+    "test-routes": "yarn test -t router",
+    "test-models": "yarn test -t model",
+    "test-controller": "yarn test -t controllers",
+    "test-auth": "yarn test -t Authentication:",
+    "dev": "nodemon --exec yarn restart",
+    "restart": "rimraf dist && yarn build && yarn start",
     "start": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "cuid": "^2.1.8",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "mongoose": "^6.2.4"
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.4",
+    "morgan": "^1.10.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "mock-req-res": "^1.2.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.2.2"
   },
   "jest": {
     "verbose": true,
@@ -31,13 +54,5 @@
       "dist/"
     ],
     "restoreMocks": true
-  },
-  "devDependencies": {
-    "jest": "^27.5.1",
-    "mock-req-res": "^1.2.0",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "supertest": "^6.2.2"
   }
 }
