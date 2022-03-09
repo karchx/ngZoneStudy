@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "NODE_ENV=testing, jest --forceExit --detectOpenHandles --silent",
@@ -13,7 +12,7 @@
     "test-auth": "yarn test -t Authentication:",
     "dev": "nodemon --exec yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
-    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node src/index.js"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
