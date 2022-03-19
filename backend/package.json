@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "test": "NODE_ENV=testing, jest --forceExit --detectOpenHandles --silent",
+    "test": "NODE_ENV=testing jest --forceExit --detectOpenHandles --silent",
     "test-routes": "yarn test -t router",
     "test-models": "yarn test -t model",
     "test-controller": "yarn test -t controllers",
@@ -45,6 +45,9 @@
     "supertest": "^6.2.2"
   },
   "jest": {
+		"transform": {
+      "^.+\\.[t|j]s?$": "babel-jest"
+    },
     "verbose": true,
     "testURL": "http://localhost",
     "testEnvironment": "node",
