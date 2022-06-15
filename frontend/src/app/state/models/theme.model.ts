@@ -1,10 +1,10 @@
 export interface Theme {
-	id: number;
-	idroom: number;
-	theme: string
-
+  id: number;
+  idroom: number;
+  description: string;
 }
 
 export interface ThemeState {
-	themes: Theme[];
+  loading: boolean;
+  themes: Theme[];
 }

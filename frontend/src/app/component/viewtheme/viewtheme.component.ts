@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { temas, ITemas } from '../../../utils/salasdb';
+import { Component, OnInit } from "@angular/core";
+import { temas, ITemas } from "../../../utils/salasdb";
 
 @Component({
-  selector: 'app-viewtheme',
-  templateUrl: './viewtheme.component.html',
-  styles: [
-  ]
+  selector: "app-viewtheme",
+  templateUrl: "./viewtheme.component.html",
+  styles: []
 })
 export class ViewthemeComponent implements OnInit {
+  id!: number;
+  temas!: Array<ITemas>;
 
-	id!: number;
-	temas!: Array<ITemas>;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-		this.temas = temas.filter(t => t.idsala === this.id);
+    this.temas = temas.filter(t => t.idsala === this.id);
   }
-
 }

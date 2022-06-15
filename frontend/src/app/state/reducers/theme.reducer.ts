@@ -1,16 +1,18 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadThemes } from "../actions/themes.action";
+import { loadedThemes, loadThemes } from "../actions/themes.action";
 import { ThemeState } from "../models/theme.model";
 
 const initialState: ThemeState = {
-	themes: []
+  loading: false,
+  themes: []
 };
 
 export const themeReducer = createReducer(
-	initialState,
-	on(loadThemes, (state, actions) => {
-		return {
-			themes: actions.themes
-		}
-	})
-)
+  initialState,
+  on(loadThemes, state => {
+    return { ...state, loading: true };
+  }),
+  on(loadedThemes, (state, action) => {
+    return { ...state, loading: false, themes: action.themes };
+  })
+);
