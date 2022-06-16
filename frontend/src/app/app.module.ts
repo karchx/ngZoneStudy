@@ -17,6 +17,7 @@ import {
   NbSidebarService,
   NbThemeModule
 } from "@nebular/theme";
+import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { AppRoutingModule } from "./app-routing.module";
@@ -55,7 +56,8 @@ import { ROOT_REDUCER } from "./state/app.state";
     NbMenuModule,
     NbInputModule,
     StoreModule.forRoot(ROOT_REDUCER),
-    StoreDevtoolsModule.instrument({ maxAge: 10 })
+    StoreDevtoolsModule.instrument({ maxAge: 10 }),
+    EffectsModule.forRoot([])
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]
