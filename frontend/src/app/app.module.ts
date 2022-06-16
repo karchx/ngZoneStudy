@@ -4,18 +4,18 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
 import {
-  NbActionsModule,
-  NbButtonModule,
-  NbCardModule,
-  NbDialogModule,
-  NbIconModule,
-  NbInputModule,
-  NbLayoutModule,
-  NbListModule,
-  NbMenuModule,
-  NbSidebarModule,
-  NbSidebarService,
-  NbThemeModule
+	NbActionsModule,
+	NbButtonModule,
+	NbCardModule,
+	NbDialogModule,
+	NbIconModule,
+	NbInputModule,
+	NbLayoutModule,
+	NbListModule,
+	NbMenuModule,
+	NbSidebarModule,
+	NbSidebarService,
+	NbThemeModule
 } from "@nebular/theme";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
@@ -28,38 +28,39 @@ import { ListthemeComponent } from "./component/listtheme/listtheme.component";
 import { NewsalasComponent } from "./component/newsalas/newsalas.component";
 import { ViewthemeComponent } from "./component/viewtheme/viewtheme.component";
 import { ROOT_REDUCER } from "./state/app.state";
+import { ThemeEffects } from "./state/effects/theme.effect";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NewsalasComponent,
-    JoinsalasComponent,
-    HomeComponent,
-    ListthemeComponent,
-    ViewthemeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    NbThemeModule.forRoot({ name: "default" }),
-    NbDialogModule.forRoot(),
-    NbButtonModule,
-    NbCardModule,
-    NbLayoutModule,
-    NbListModule,
-    NbEvaIconsModule,
-    NbSidebarModule,
-    NbIconModule,
-    NbActionsModule,
-    NbMenuModule,
-    NbInputModule,
-    StoreModule.forRoot(ROOT_REDUCER),
-    StoreDevtoolsModule.instrument({ maxAge: 10 }),
-    EffectsModule.forRoot([])
-  ],
-  providers: [NbSidebarService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		NewsalasComponent,
+		JoinsalasComponent,
+		HomeComponent,
+		ListthemeComponent,
+		ViewthemeComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		RouterModule,
+		NbThemeModule.forRoot({ name: "default" }),
+		NbDialogModule.forRoot(),
+		NbButtonModule,
+		NbCardModule,
+		NbLayoutModule,
+		NbListModule,
+		NbEvaIconsModule,
+		NbSidebarModule,
+		NbIconModule,
+		NbActionsModule,
+		NbMenuModule,
+		NbInputModule,
+		StoreModule.forRoot(ROOT_REDUCER),
+		StoreDevtoolsModule.instrument({ maxAge: 10 }),
+		EffectsModule.forRoot([ThemeEffects])
+	],
+	providers: [NbSidebarService],
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

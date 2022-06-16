@@ -6,7 +6,7 @@ import { ISalas, ITemas, salas } from "../utils/salasdb";
 import { NewsalasComponent } from "./component/newsalas/newsalas.component";
 import { ViewthemeComponent } from "./component/viewtheme/viewtheme.component";
 import { ThemeService } from "./services/theme.service";
-import { loadedThemes, loadThemes } from "./state/actions/themes.action";
+import { loadThemes } from "./state/actions/themes.action";
 import { AppState } from "./state/app.state";
 import { selectLoading, selectThemes } from "./state/selector/theme.selector";
 
@@ -34,15 +34,6 @@ export class AppComponent implements OnInit {
 
 		this.store.dispatch(loadThemes());
 
-		this.themeService.getThemes().subscribe({
-			next: (value) => {
-				this.store.dispatch(
-					loadedThemes({
-						themes: value
-					})
-				);
-			}
-		})
 		this.theme$ = this.store.select(selectThemes);
 	}
 
