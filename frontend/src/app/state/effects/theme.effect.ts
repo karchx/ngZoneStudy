@@ -6,14 +6,16 @@ import { LoadedThemes, LoadThemes } from "../actions/themes.action";
 
 @Injectable()
 export class ThemeEffects {
-	loadThemes$ = createEffect(() => this.actions$.pipe(
-		ofType(LoadThemes),
-		mergeMap(() => this.themeService.getThemes()
-			.pipe(
-				map(themes => ({ type: LoadedThemes, themes })),
-				catchError(() => EMPTY)
-			)
-		)
-	))
-	constructor(private actions$: Actions, private themeService: ThemeService) { }
+  loadThemes$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoadThemes),
+      mergeMap(() =>
+        this.themeService.getThemes().pipe(
+          map(themes => ({ type: LoadedThemes, themes })),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+  constructor(private actions$: Actions, private themeService: ThemeService) {}
 }
