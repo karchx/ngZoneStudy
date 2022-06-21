@@ -14,15 +14,16 @@ global.newId = () => {
 	return mongoose.Types.ObjectId();
 }
 
-const remove = collection =>
+const remove = collection => {
 	new Promise((resolve, reject) => {
 		collection.deleteMany(err => {
 			if (err) return reject(err)
 			resolve()
 		});
 	});
+}
 
-beforeEach(async done => {
+beforeEach(async () => {
 	const db = cuid();
 	function clearDB() {
 		return Promise.all(_.map(mongoose.connection.collections, c => remove(c)));
@@ -46,15 +47,13 @@ beforeEach(async done => {
 	} else {
 		await clearDB();
 	}
+});
+
+afterEach(async () => {
+    await mongoose.connection.db.dropDatabase();
+    await mongoose.disconnect();
+});
+
+afterAll((done) => {
 	done();
-});
-
-afterEach(async done => {
-	await mongoose.connection.db.dropDatabase();
-	await mongoose.disconnect();
-	return done();
-});
-
-afterAll(done => {
-	return done();
 });

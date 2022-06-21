@@ -3,6 +3,8 @@ import morgan from "morgan";
 import config from "./config";
 import cors from "cors";
 import { connect } from "./utils/db";
+import { signup, protect } from "./utils/auth";
+import userRouter from "./resources/user/user.router";
 
 export const app = express();
 
@@ -12,6 +14,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
+
+app.post("/signup", signup);
+
+app.use("/api", protect);
+
+app.use("/api/user", userRouter);
 
 export const start = async () => {
   try {

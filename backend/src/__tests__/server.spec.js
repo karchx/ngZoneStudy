@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 
 import { app } from "../server";
 import { User } from "../resources/user/user.model";
+import { newToken } from "../utils/auth";
 
 describe("API Authentication:", () => {
   let token;
@@ -33,7 +34,7 @@ describe("API Authentication:", () => {
         request(app).put(`/api/item/${id}`).set("Authorization", jwt),
         request(app).delete(`/api/item/${id}`).set("Authorization", jwt)
       ]);
-      results.forEach(res => expect(res.statusCode)).not.toBe(401);
+      results.forEach(res => expect(res.statusCode).not.toBe(401));
     });
   });
 });
