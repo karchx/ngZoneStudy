@@ -10,9 +10,10 @@
     "test-models": "yarn test -t model",
     "test-controller": "yarn test -t controllers",
     "test-auth": "yarn test -t Authentication:",
+    "format": "prettier --write \"src/**/*.js\"",
     "dev": "nodemon --exec yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
-		"clean": "rimraf dist",
+    "clean": "rimraf dist",
     "start": "node dist/index.js"
   },
   "keywords": [],
@@ -45,14 +46,11 @@
     "rimraf": "^3.0.2",
     "supertest": "^6.2.2"
   },
-  "jest": {
-		"transform": {
-      "^.+\\.[t|j]s?$": "babel-jest"
-    },
+  "jest": {	
     "verbose": true,
     "testURL": "http://localhost",
     "testEnvironment": "node",
-    "setupTestFrameworkScriptFile": "<rootDir>/test-db-setup.js",
+    "setupFilesAfterEnv": ["<rootDir>/test-db-setup.js"],
     "testPathIgnorePatterns": [
       "dist/"
     ],

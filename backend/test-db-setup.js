@@ -8,7 +8,7 @@ const models = { User };
 const url = 
 	process.env.MONGODB_URL ||
 	process.env.DB_URL			||
-	'mongodb://localhost:27017/zoneStudy-testing';
+      'mongodb://localhost:27017/zoneStudy-testing';
 
 global.newId = () => {
 	return mongoose.Types.ObjectId();
@@ -16,7 +16,7 @@ global.newId = () => {
 
 const remove = collection =>
 	new Promise((resolve, reject) => {
-		collection.remove(err => {
+		collection.deleteMany(err => {
 			if (err) return reject(err)
 			resolve()
 		});
@@ -55,6 +55,6 @@ afterEach(async done => {
 	return done();
 });
 
-after(done => {
+afterAll(done => {
 	return done();
 });

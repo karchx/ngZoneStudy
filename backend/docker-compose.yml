@@ -3,9 +3,7 @@ version: "3.3"
 services:
   mongo:
     image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+    container_name: db-study
     ports:
       - 27017:27017
     volumes:
