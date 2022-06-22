@@ -14,10 +14,10 @@ describe("API Authentication:", () => {
 
   describe("api auth", () => {
     test("api should be locked down", async () => {
-      let response = await request(app).get("/api/item");
+      let response = await request(app).get("/api/room");
       expect(response.statusCode).toBe(401);
 
-      response = await request(app).get("/api/list");
+      response = await request(app).get("/api/theme");
       expect(response.statusCode).toBe(401);
 
       response = await request(app).get("/api/user");
@@ -28,11 +28,11 @@ describe("API Authentication:", () => {
       const jwt = `Bearer ${token}`;
       const id = mongoose.Types.ObjectId();
       const results = await Promise.all([
-        request(app).get("/api/item").set("Authorization", jwt),
-        request(app).get(`/api/item/${id}`).set("Authorization", jwt),
-        request(app).post("/api/item").set("Authorization", jwt),
-        request(app).put(`/api/item/${id}`).set("Authorization", jwt),
-        request(app).delete(`/api/item/${id}`).set("Authorization", jwt)
+        request(app).get("/api/room").set("Authorization", jwt),
+        request(app).get(`/api/room/${id}`).set("Authorization", jwt),
+        request(app).post("/api/room").set("Authorization", jwt),
+        request(app).put(`/api/room/${id}`).set("Authorization", jwt),
+        request(app).delete(`/api/room/${id}`).set("Authorization", jwt)
       ]);
       results.forEach(res => expect(res.statusCode).not.toBe(401));
     });

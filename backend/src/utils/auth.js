@@ -9,9 +9,9 @@ export const newToken = user => {
 };
 
 export const verifyToken = token => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     jwt.verify(token, config.secrets.jwt, (err, payload) => {
-      if (err) return reject(err);
+      if (err) reject(err);
       resolve(payload);
     });
   });
@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
 };
 
 export const protect = async (req, res, next) => {
-  const bearer = req.header.authorization;
+  const bearer = req.headers.authorization;
 
   if (!bearer || !bearer.startsWith("Bearer ")) {
     return res.status(401).end();

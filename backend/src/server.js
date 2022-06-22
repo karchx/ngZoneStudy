@@ -5,6 +5,7 @@ import cors from "cors";
 import { connect } from "./utils/db";
 import { signup, protect } from "./utils/auth";
 import userRouter from "./resources/user/user.router";
+import roomRouter from "./resources/room/room.router";
 
 export const app = express();
 
@@ -20,6 +21,7 @@ app.post("/signup", signup);
 app.use("/api", protect);
 
 app.use("/api/user", userRouter);
+app.use("/api/room", roomRouter);
 
 export const start = async () => {
   try {
