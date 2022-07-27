@@ -31,6 +31,34 @@ export const signup = async (req, res) => {
   }
 };
 
+export const signin = async (req, res) => {
+   if (!req.body.email || !req.body.password) {
+    return res.status(400).send({ message: "need email and password" });
+   }
+    const invalid = { message: "Invalid email and password combination" };
+
+    try {
+	const user = await User.findOne({ email: req.body.email })
+              .select("email password")
+	      .exec()
+
+	if(!user) {
+	    return res.status(401).send(invalid);
+	}
+
+	const match = await user.checkPassword(req.body.password);
+	if(!match) {
+	    return res.status(401).send(invalid);
+	}
+
+	const token = newToken(user);
+	return res.status(200).send({token});
+    } catch(e) {
+	console.error(e);
+	return res.status(500).end();
+    }
+}
+
 export const protect = async (req, res, next) => {
   const bearer = req.headers.authorization;
 
