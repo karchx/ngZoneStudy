@@ -44,7 +44,9 @@ describe("Authentication:", () => {
     test("creates user and sends new token from user", async () => {
       expect.assertions(2);
 
-      const req = { body: { email: "hello@hello.com", password: "293jss", username: "hellostes" } };
+      const req = {
+        body: { email: "hello@hello.com", password: "293jss", username: "hellostes" }
+      };
       const res = {
         status(status) {
           expect(status).toBe(201);
@@ -98,7 +100,7 @@ describe("Authentication:", () => {
       await User.create({
         email: "hello@me.com",
         password: "yoyoyo",
-				username: "mehello"
+        username: "mehello"
       });
       const req = { body: { email: "hello@me.com", password: "wrong" } };
       const res = {
@@ -118,7 +120,7 @@ describe("Authentication:", () => {
       const fields = {
         email: "hello@me.com",
         password: "pepepe",
-				username: "pephello"
+        username: "pephello"
       };
       const saveUser = await User.create(fields);
       const req = { body: fields };
