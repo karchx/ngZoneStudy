@@ -8,7 +8,7 @@ import { newToken } from "../utils/auth";
 describe("API Authentication:", () => {
   let token;
   beforeEach(async () => {
-    const user = await User.create({ email: "a@a.com", password: "hello" });
+    const user = await User.create({ email: "a@a.com", password: "hello", username: "ahello" });
     token = newToken(user);
   });
 
