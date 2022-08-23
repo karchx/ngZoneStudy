@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
 import {
   NbActionsModule,
   NbButtonModule,
   NbCardModule,
   NbDialogModule,
-	NbFormFieldModule,
+  NbFormFieldModule,
   NbIconModule,
   NbInputModule,
   NbLayoutModule,
@@ -16,13 +16,12 @@ import {
   NbThemeModule
 } from "@nebular/theme";
 
-
 @NgModule({
   declarations: [],
   imports: [
-		NbThemeModule.forRoot({ name: "default" }),
+    NbThemeModule.forRoot({ name: "default" }),
     NbDialogModule.forRoot(),
-		NbFormFieldModule,
+    NbFormFieldModule,
     NbButtonModule,
     NbCardModule,
     NbLayoutModule,
@@ -32,12 +31,12 @@ import {
     NbIconModule,
     NbActionsModule,
     NbMenuModule,
-    NbInputModule,
+    NbInputModule
   ],
-	exports: [
+  exports: [
     NbButtonModule,
     NbCardModule,
-		NbFormFieldModule,
+    NbFormFieldModule,
     NbLayoutModule,
     NbListModule,
     NbEvaIconsModule,
@@ -45,8 +44,8 @@ import {
     NbIconModule,
     NbActionsModule,
     NbMenuModule,
-    NbInputModule,
+    NbInputModule
   ],
-  providers: [NbSidebarService],
+  providers: [NbSidebarService]
 })
-export class NebularModule { }
+export class NebularModule {}

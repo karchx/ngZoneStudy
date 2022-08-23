@@ -15,15 +15,13 @@ import { ROOT_REDUCER } from "./state/app.state";
 import { ThemeEffects } from "./state/effects/theme.effect";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
-		NebularModule,
+    NebularModule,
     StoreModule.forRoot(ROOT_REDUCER),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     EffectsModule.forRoot([ThemeEffects])

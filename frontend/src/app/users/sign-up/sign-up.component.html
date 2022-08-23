@@ -2,19 +2,24 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid"
+          alt="Sample image"
+        />
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form>
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+          <div
+            class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+          >
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-						<button type="button" nbButton status="primary" class="m-1">
-							<nb-icon icon="google"></nb-icon>
+            <button type="button" nbButton status="primary" class="m-1">
+              <nb-icon icon="google"></nb-icon>
             </button>
 
             <button type="button" nbButton status="primary" class="m-1">
-							<nb-icon icon="twitter"></nb-icon>
+              <nb-icon icon="twitter"></nb-icon>
             </button>
           </div>
 
@@ -24,42 +29,51 @@
 
           <!-- Email input -->
           <nb-form-field class="form-outline mb-4">
-            <input type="email" placeholder="Email" fullWidth nbInput/>
+            <input type="email" placeholder="Email" fullWidth nbInput />
           </nb-form-field>
 
           <!-- Password input -->
-					<nb-form-field class="form-outline mb-3">
-         		<input [type]="getInputType()" nbInput fullWidth placeholder="Password">
-         		<button nbSuffix nbButton ghost (click)="toggleShowPassword()">
-           		<nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
-                    pack="eva"
-                    [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
-           		</nb-icon>
-         		</button>
-       		</nb-form-field>
+          <nb-form-field class="form-outline mb-3">
+            <input [type]="getInputType()" nbInput fullWidth placeholder="Password" />
+            <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+              <nb-icon
+                [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                pack="eva"
+                [attr.aria-label]="showPassword ? 'hide password' : 'show password'"
+              >
+              </nb-icon>
+            </button>
+          </nb-form-field>
 
           <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
             <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
+              <input
+                class="form-check-input me-2"
+                type="checkbox"
+                value=""
+                id="form2Example3"
+              />
+              <label class="form-check-label" for="form2Example3"> Remember me </label>
             </div>
             <a href="#!" class="text-body">Forgot password?</a>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" 
-										nbButton 
-										status="primary"
-          					style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                class="link-danger">Register</a></p>
+            <button
+              type="button"
+              nbButton
+              status="primary"
+              style="padding-left: 2.5rem; padding-right: 2.5rem"
+            >
+              Login
+            </button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">
+              Don't have an account? <a href="#!" class="link-danger">Register</a>
+            </p>
           </div>
-
         </form>
       </div>
     </div>
-  </div> 
+  </div>
 </section>
