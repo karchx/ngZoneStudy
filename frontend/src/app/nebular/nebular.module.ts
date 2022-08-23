@@ -5,6 +5,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbDialogModule,
+	NbFormFieldModule,
   NbIconModule,
   NbInputModule,
   NbLayoutModule,
@@ -21,6 +22,7 @@ import {
   imports: [
 		NbThemeModule.forRoot({ name: "default" }),
     NbDialogModule.forRoot(),
+		NbFormFieldModule,
     NbButtonModule,
     NbCardModule,
     NbLayoutModule,
@@ -35,6 +37,7 @@ import {
 	exports: [
     NbButtonModule,
     NbCardModule,
+		NbFormFieldModule,
     NbLayoutModule,
     NbListModule,
     NbEvaIconsModule,
