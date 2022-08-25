@@ -1,5 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { User } from "src/app/core/models/user";
 
+// TODO: add style scss
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.component.html",
@@ -23,8 +26,19 @@ import { Component } from "@angular/core";
     `
   ]
 })
-export class SignUpComponent {
-  showPassword: boolean = false;
+export class SignUpComponent implements OnInit {
+  public signupForm: FormGroup = new FormGroup({});
+  public showPassword: boolean = false;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.signupForm = this.formBuilder.group({
+      email: ["", Validators.required],
+      username: ["", Validators.required],
+      password: ["", Validators.required]
+    });
+  }
 
   getInputType() {
     if (this.showPassword) {
@@ -32,6 +46,8 @@ export class SignUpComponent {
     }
     return "password";
   }
+
+  submit() {}
 
   toggleShowPassword() {
     this.showPassword = !this.showPassword;
