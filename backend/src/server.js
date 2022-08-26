@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
-app.post("/signup", signup);
+app.post("/api/auth/signup", signup);
 
 app.use("/api", protect);
 
