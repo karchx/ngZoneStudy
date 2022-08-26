@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 import { User } from "src/app/core/models/user";
+import { AppState } from "src/app/state/app.state";
+import { signup } from "../users.actions";
 
 // TODO: add style scss
 @Component({
@@ -30,7 +33,7 @@ export class SignUpComponent implements OnInit {
   public signupForm: FormGroup = new FormGroup({});
   public showPassword: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -47,7 +50,12 @@ export class SignUpComponent implements OnInit {
     return "password";
   }
 
-  submit() {}
+  submit() {
+    const payload: User = {
+      ...this.signupForm.value
+    };
+    this.store.dispatch(signup({ user: payload }));
+  }
 
   toggleShowPassword() {
     this.showPassword = !this.showPassword;

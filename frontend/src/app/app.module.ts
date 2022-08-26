@@ -13,6 +13,8 @@ import { NebularModule } from "./nebular/nebular.module";
 import { AppComponent } from "./app.component";
 import { ROOT_REDUCER } from "./state/app.state";
 import { ThemeEffects } from "./state/effects/theme.effect";
+import { UsersEffects } from "./users/users.effects";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,11 +22,12 @@ import { ThemeEffects } from "./state/effects/theme.effect";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule,
     NebularModule,
     StoreModule.forRoot(ROOT_REDUCER),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
-    EffectsModule.forRoot([ThemeEffects])
+    EffectsModule.forRoot([ThemeEffects, UsersEffects])
   ],
   bootstrap: [AppComponent]
 })
