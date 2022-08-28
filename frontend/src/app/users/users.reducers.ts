@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "../core/models/user";
-import { signup, signupSuccess } from "./users.actions";
+import { signup, signupError, signupSuccess } from "./users.actions";
 
 export interface State {
   user?: User;
@@ -15,5 +15,8 @@ export const userReducer = createReducer(
   }),
   on(signupSuccess, (state, action) => {
     return { ...state, user: action.user };
-  })
+  }),
+  on(signupError, (state, action) => {
+    return { ...state, error: action.error.error.message }
+  }),
 );
