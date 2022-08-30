@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { create, joinRoom } from "./room.controller";
+import { listRoom, listMyRoom ,create, joinRoom } from "./room.controller";
 
 const router = Router();
 
-//router.get("/", me);
-//router.get("/:id", me);
+router.get("/", listRoom);
+router.get("/myroom", listMyRoom);
 router.post("/", create);
 router.put("/join/:id", joinRoom);
 //router.delete("/:id", me);

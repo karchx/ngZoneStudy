@@ -1,6 +1,16 @@
 import { Room } from "./room.model";
 import { User } from "../user/user.model";
 
+export const listRoom = async (_, res) => {
+  const rooms = await Room.find().populate("students", "-password -__v").select("-__v").lean().exec();
+  return res.status(200).send({ rooms });
+}
+
+export const listMyRoom = async (req, res) => {
+  const myRooms = await Room.findOne({ students : { $gte: req.user._id } }).lean().exec();
+  return res.status(200).send({ myRooms });
+}
+
 export const create = async (req, res) => {
   const id = req.user._id;
 
@@ -25,7 +35,6 @@ export const create = async (req, res) => {
 };
 
 export const joinRoom = async (req, res) => {
-  const idStudent = req.user._id;
   const { id } = req.params;
 
   try {
