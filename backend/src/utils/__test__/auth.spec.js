@@ -1,5 +1,4 @@
-import { newToken, verifyToken, signup, signin, protect } from "../auth";
-import mongoose from "mongoose";
+import { newToken, verifyToken, signup, signin } from "../auth";
 import jwt from "jsonwebtoken";
 import config from "../../config";
 import { User } from "../../resources/user/user.model";

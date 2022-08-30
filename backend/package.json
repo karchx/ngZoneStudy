@@ -27,7 +27,7 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.5.3",
     "morgan": "^1.10.0",
     "validator": "^13.7.0"
   },
@@ -46,11 +46,13 @@
     "rimraf": "^3.0.2",
     "supertest": "^6.2.2"
   },
-  "jest": {	
+  "jest": {
     "verbose": true,
     "testURL": "http://localhost",
     "testEnvironment": "node",
-    "setupFilesAfterEnv": ["<rootDir>/test-db-setup.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test-db-setup.js"
+    ],
     "testPathIgnorePatterns": [
       "dist/"
     ],

@@ -3,7 +3,7 @@ import morgan from "morgan";
 import config from "./config";
 import cors from "cors";
 import { connect } from "./utils/db";
-import { signup, protect } from "./utils/auth";
+import { signup, signin, protect } from "./utils/auth";
 import userRouter from "./resources/user/user.router";
 import roomRouter from "./resources/room/room.router";
 
@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
 app.post("/api/auth/signup", signup);
+app.post("/api/auth/signin", signin);
 
 app.use("/api", protect);
 

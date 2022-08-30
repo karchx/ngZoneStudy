@@ -31,10 +31,14 @@ describe("API Authentication:", () => {
     test("passes with JWT", async () => {
       const jwt = `Bearer ${token}`;
       const id = mongoose.Types.ObjectId();
+      const room = {
+        nameRoom: "Test jwt",
+        students: id
+      };
       const results = await Promise.all([
         request(app).get("/api/room").set("Authorization", jwt),
         request(app).get(`/api/room/${id}`).set("Authorization", jwt),
-        request(app).post("/api/room").set("Authorization", jwt),
+        request(app).post("/api/room").send(room).set("Authorization", jwt),
         request(app).put(`/api/room/${id}`).set("Authorization", jwt),
         request(app).delete(`/api/room/${id}`).set("Authorization", jwt)
       ]);
