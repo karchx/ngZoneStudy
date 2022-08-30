@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { listRoom, listMyRoom ,create, joinRoom } from "./room.controller";
+import { listRoom, listMyRoom, create, joinRoom } from "./room.controller";
 
 const router = Router();
 
