@@ -12,7 +12,7 @@ export class UsersEffects {
       mergeMap(payload =>
         this.userService.create(payload.user).pipe(
           map(user => ({ type: ActionsTypes.SIGN_UP_SUCCESS, user })),
-          catchError((error) => of(signupError({ error })))
+          catchError(error => of(signupError({ error })))
         )
       )
     )

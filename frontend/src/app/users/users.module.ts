@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -7,6 +8,6 @@ import { NebularModule } from "../nebular/nebular.module";
 
 @NgModule({
   declarations: [SignUpComponent],
-  imports: [UsersRoutingModule, NebularModule, ReactiveFormsModule]
+  imports: [CommonModule, UsersRoutingModule, NebularModule, ReactiveFormsModule]
 })
 export class UsersModule {}

@@ -9,4 +9,7 @@ export enum ActionsTypes {
 
 export const signup = createAction(ActionsTypes.SIGN_UP, props<{ user: User }>());
 export const signupSuccess = createAction(ActionsTypes.SIGN_UP, props<{ user: User }>());
-export const signupError = createAction(ActionsTypes.SIGN_UP_ERROR, props<{ error: any }>());
+export const signupError = createAction(
+  ActionsTypes.SIGN_UP_ERROR,
+  props<{ error: any }>()
+);

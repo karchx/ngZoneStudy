@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 import { User } from "src/app/core/models/user";
 import { AppState } from "src/app/state/app.state";
 import { signup } from "../users.actions";
+import { getSignUpError } from "../users.reducers";
 
 // TODO: add style scss
 @Component({
@@ -32,6 +34,7 @@ import { signup } from "../users.actions";
 export class SignUpComponent implements OnInit {
   public signupForm: FormGroup = new FormGroup({});
   public showPassword: boolean = false;
+  public error$: Observable<string | undefined> = new Observable();
 
   constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
 
@@ -41,6 +44,8 @@ export class SignUpComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
+
+    this.error$ = this.store.select(getSignUpError);
   }
 
   getInputType() {
