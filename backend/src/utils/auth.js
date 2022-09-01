@@ -23,11 +23,20 @@ export const signup = async (req, res) => {
   }
 
   try {
-    const user = await User.create(req.body);
-    const token = newToken(user);
-    return res.status(201).send({ user, token });
+
+    const userExist = await User.findOne({ email: req.body.email }).lean().exec();
+
+    if(!userExist) {
+      const user = await User.create(req.body);
+      const token = newToken(user);
+
+      return res.status(201).send({ user, token });
+    }
+
+    return res.status(400).send({ message: "User already exists" });
+
   } catch (e) {
-    return res.status(500).end();
+    return res.status(400).send({ message: "User already exists" });
   }
 };
 
