@@ -1,7 +1,6 @@
-import { createReducer, createSelector, on } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import { User } from "../core/models/user";
-import { AppState } from "../state/app.state";
-import { signup, signupError, signupSuccess } from "./users.actions";
+import { signup, signupSuccess } from "./users.actions";
 
 export interface State {
   user?: User;
@@ -17,16 +16,5 @@ export const userReducer = createReducer(
   }),
   on(signupSuccess, (state, action) => {
     return { ...state, user: action.user };
-  }),
-  on(signupError, (state, action) => {
-    return { ...state, error: action.error.error.message };
   })
-);
-
-// TODO: move file .selectors
-export const getSignUpErrorFeature = (state: AppState) => state.users;
-
-export const getSignUpError = createSelector(
-  getSignUpErrorFeature,
-  (state: State) => state.error
 );

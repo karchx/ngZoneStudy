@@ -6,6 +6,7 @@ import * as users from "../users/users.reducers";
 export interface AppState {
   listThemes: ThemeState;
   users: users.State;
+  //notify:
 }
 
 export const ROOT_REDUCER: ActionReducerMap<AppState> = {
