@@ -16,10 +16,9 @@ const initialState: State = {
 export const userReducer = createReducer(
   initialState,
   on(signup, state => {
-    return { ...state, user: undefined, authenticated: false };
+    return { ...state, user: undefined };
   }),
   on(signupSuccess, (state, action) => {
-    console.log(action.user);
     return { ...state, user: action.user, authenticated: action.authenticated };
   })
 );
@@ -27,4 +26,9 @@ export const userReducer = createReducer(
 export const isAuthenticated = createSelector(
   (state: AppState) => state.users,
   (state: State) => state.authenticated
+);
+
+export const userSelect = createSelector(
+  (state: AppState) => state.users,
+  (state: State) => state.user
 );

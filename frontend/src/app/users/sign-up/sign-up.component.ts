@@ -1,13 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { Router } from "@angular/router";
 
 import { User } from "src/app/core/models/user";
 import { AppState } from "src/app/state/app.state";
 import { signup } from "../users.actions";
-import { isAuthenticated } from "../users.reducers";
-import { filter } from "rxjs";
+import { userSelect } from "../users.reducers";
 
 // TODO: add style scss
 @Component({
@@ -37,11 +35,7 @@ export class SignUpComponent implements OnInit {
   public signupForm: FormGroup = new FormGroup({});
   public showPassword: boolean = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private store: Store<AppState>,
-    private route: Router
-  ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -64,7 +58,7 @@ export class SignUpComponent implements OnInit {
     };
     this.store.dispatch(signup({ user: payload }));
 
-    this.store.select(isAuthenticated).subscribe(v => console.log(v));
+    this.store.select(userSelect).subscribe(v => console.log(v));
   }
 
   toggleShowPassword() {
