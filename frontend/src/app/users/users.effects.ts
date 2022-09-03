@@ -13,7 +13,7 @@ export class UsersEffects {
       exhaustMap(payload =>
         this.userService.create(payload.user).pipe(
           switchMap(user => [
-            { type: ActionsTypes.SIGN_UP_SUCCESS, user },
+            { type: ActionsTypes.SIGN_UP_SUCCESS, user, authenticated: true },
             displaySuccess({ title: "Successfully", description: "ok" })
           ]),
           catchError(error =>
