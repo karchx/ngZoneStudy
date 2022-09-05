@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LocalStorageJwtService {
-
   getItem(): Observable<string | null> {
     const data = localStorage.getItem("jwtToken");
     if (data) {
@@ -16,7 +15,7 @@ export class LocalStorageJwtService {
   }
 
   setItem(data: string): Observable<string> {
-    localStorage.setItem("jwtToken", data)
+    localStorage.setItem("jwtToken", data);
     return of(data);
   }
 

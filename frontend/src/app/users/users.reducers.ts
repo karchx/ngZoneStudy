@@ -1,6 +1,6 @@
-import {createFeature, createReducer, on} from "@ngrx/store";
-import {User} from "../core/models/user";
-import {authActions} from "./users.actions";
+import { createFeature, createReducer, on } from "@ngrx/store";
+import { User } from "../core/models/user";
+import { authActions } from "./users.actions";
 
 export interface AuthState {
   loggedIn: boolean;
@@ -10,23 +10,23 @@ export interface AuthState {
 }
 
 export enum Status {
-  INIT = 'INIT',
-  IN_PROGRESS = 'IN_PROGRESS',
-};
+  INIT = "INIT",
+  IN_PROGRESS = "IN_PROGRESS"
+}
 
 export const authInitialState: AuthState = {
   loggedIn: false,
   status: Status.INIT,
   user: {
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: ""
   },
-  token: ''
+  token: ""
 };
 
 export const authFeature = createFeature({
-  name: 'auth',
+  name: "auth",
   reducer: createReducer(
     authInitialState,
     on(authActions.registerSuccess, (state, action) => ({
@@ -34,11 +34,11 @@ export const authFeature = createFeature({
       loggedIn: true,
       status: Status.INIT,
       user: action.user,
-      token: action.token || ''
+      token: action.token || ""
     })),
-    on(authActions.registerFailure, (state) => ({
+    on(authActions.registerFailure, state => ({
       ...state,
       status: Status.INIT
-    })),
-  ),
+    }))
+  )
 });

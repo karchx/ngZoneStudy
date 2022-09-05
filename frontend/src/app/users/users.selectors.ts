@@ -1,4 +1,4 @@
-import { authFeature } from "./users.reducers"
+import { authFeature } from "./users.reducers";
 
 export const { selectAuthState, selectLoggedIn, selectStatus, selectUser } = authFeature;
 

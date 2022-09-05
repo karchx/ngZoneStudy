@@ -6,9 +6,9 @@ export interface User {
 }
 
 export interface UserResponse {
-  user: User
+  user: User;
   token: string;
-};
+}
 
 export interface NewUser {
   email: string;
