@@ -5,11 +5,11 @@ import * as users from "../users/users.reducers";
 
 export interface AppState {
   listThemes: ThemeState;
-  users: users.AuthState;
+  auth: users.AuthState;
   //notify:
 }
 
 export const ROOT_REDUCER: ActionReducerMap<AppState> = {
   listThemes: themeReducer,
-  users: users.authFeature.reducer
+  auth: users.authFeature.reducer
 };

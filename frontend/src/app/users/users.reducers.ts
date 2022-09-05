@@ -5,6 +5,7 @@ import {authActions} from "./users.actions";
 export interface AuthState {
   loggedIn: boolean;
   user: User;
+  token: string;
   status: Status;
 }
 
@@ -20,8 +21,8 @@ export const authInitialState: AuthState = {
     username: '',
     email: '',
     password: '',
-    token: ''
   },
+  token: ''
 };
 
 export const authFeature = createFeature({
@@ -32,7 +33,8 @@ export const authFeature = createFeature({
       ...state,
       loggedIn: true,
       status: Status.INIT,
-      user: action.user
+      user: action.user,
+      token: action.token || ''
     })),
     on(authActions.registerFailure, (state) => ({
       ...state,

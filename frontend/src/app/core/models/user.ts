@@ -3,5 +3,19 @@ export interface User {
   username: string;
   password: string;
   id?: number;
-  token?: string;
+}
+
+export interface UserResponse {
+  user: User
+  token: string;
+};
+
+export interface NewUser {
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface NewUserRequest {
+  user: NewUser;
 }

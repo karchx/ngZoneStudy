@@ -4,8 +4,7 @@ import { Store } from "@ngrx/store";
 
 import { User } from "src/app/core/models/user";
 import { AppState } from "src/app/state/app.state";
-import { signup } from "../users.actions";
-import { userSelect } from "../users.reducers";
+import { authActions } from "../users.actions";
 
 // TODO: add style scss
 @Component({
@@ -56,9 +55,8 @@ export class SignUpComponent implements OnInit {
     const payload: User = {
       ...this.signupForm.value
     };
-    this.store.dispatch(signup({ user: payload }));
 
-    this.store.select(userSelect).subscribe(v => console.log(v));
+    this.store.dispatch(authActions.register({ user: payload }));
   }
 
   toggleShowPassword() {
