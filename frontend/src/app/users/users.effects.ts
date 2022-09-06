@@ -37,6 +37,18 @@ export class UsersEffects {
     { dispatch: false }
   );
 
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(authActions.logout),
+        tap(() => {
+          this.localStorageJwtService.removeItem().subscribe();
+          this.router.navigateByUrl("users/sign-up");
+        })
+      ),
+    { dispatch: false }
+  );
+
   constructor(
     private actions$: Actions,
     private userService: UserService,

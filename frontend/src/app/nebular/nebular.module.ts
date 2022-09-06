@@ -30,7 +30,7 @@ import {
     NbSidebarModule,
     NbIconModule,
     NbActionsModule,
-    NbMenuModule,
+    NbMenuModule.forRoot(),
     NbInputModule
   ],
   exports: [

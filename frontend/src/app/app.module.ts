@@ -14,9 +14,9 @@ import { NebularModule } from "./nebular/nebular.module";
 
 import { AppComponent } from "./app.component";
 import { ROOT_REDUCER } from "./state/app.state";
-import { ThemeEffects } from "./state/effects/theme.effect";
 import { UsersEffects } from "./users/users.effects";
 import { NotifyEffects } from "./shared/notify/notify.effects";
+import { ThemeModule } from "./@theme/theme.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +30,8 @@ import { NotifyEffects } from "./shared/notify/notify.effects";
     StoreModule.forRoot(ROOT_REDUCER),
     ToastrModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
-    EffectsModule.forRoot([ThemeEffects, UsersEffects, NotifyEffects])
+    EffectsModule.forRoot([UsersEffects, NotifyEffects]),
+    ThemeModule
   ],
   bootstrap: [AppComponent]
 })

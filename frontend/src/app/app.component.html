@@ -1,48 +1,45 @@
-<!--<nb-layout>
-	<nb-layout-header fixed>
-    <a href="#" (click)="toggle()">
-      <nb-action icon="menu-outline"></nb-action>
-    </a>
-    <h3 class="ml-4">{{ title }}</h3>
-  </nb-layout-header>
-  <nb-layout-header subheader>
-    <button nbButton status="primary" (click)="open()">
-      <nb-icon icon="plus-outline"></nb-icon>
-    </button>
+<nb-layout>
+  <!--HEADER-->
+  <nb-layout-header fixed>
+    <div class="title-bar">
+      <div style="margin: auto">
+        <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+          <nb-icon icon="menu-2-outline"></nb-icon>
+        </a>
+      </div>
+      <div style="margin: auto; text-align: center">
+        <h3>{{ title }}</h3>
+      </div>
+      <div *ngIf="!(isLoggedIn$ | async)" style="margin: auto; margin-right: 0">
+        <button
+          type="button"
+          style="z-index: 1; width: max-content"
+          nbButton
+          status="info"
+          (click)="openDialog()"
+        >
+          Log In
+        </button>
+      </div>
+      <div *ngIf="isLoggedIn$ | async" style="margin: auto; margin-right: 0">
+        <button
+          type="button"
+          style="z-index: 1; width: max-content"
+          nbButton
+          status="info"
+          (click)="logOut()"
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
   </nb-layout-header>
 
+  <!--SIDEBAR-->
   <nb-sidebar>
-    <b *ngIf="loading$ | async">Cargando...</b>
-    <nb-list *ngFor="let s of theme$ | async">
-      <nb-list-item>
-        <div>
-          <p>
-            {{ s.idsala }}<strong class="ml-4" *ngFor="let t of s.tema">{{ t }}h</strong>
-            <nb-icon icon="clock-outline" class="mt-2"></nb-icon>
-          </p>
-          <p>
-            Participantes: {{ s.id }}
-            <nb-icon icon="person-outline" class="ml-4"></nb-icon>
-          </p>
-
-          <br />
-
-          <a nbButton status="info" [routerLink]="['/join', s.id]" (click)="join(s.id)"
-            >Unirse</a
-          >
-          <button nbButton status="info" (click)="viewTheme(s.id)" class="mt-2">
-            Ver temario<nb-icon icon="eye-outline"></nb-icon>
-          </button>
-        </div>
-      </nb-list-item>
-    </nb-list>
+    <nb-menu [items]="menu"></nb-menu>
   </nb-sidebar>
 
-  <nb-layout-column class="colored-column-basic">
-    <router-outlet></router-outlet>
-	</nb-layout-column>
-</nb-layout>-->
-<nb-layout>
   <nb-layout-column class="colored-column-basic">
     <router-outlet></router-outlet>
   </nb-layout-column>

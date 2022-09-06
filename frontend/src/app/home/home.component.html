@@ -1,0 +1,41 @@
+<!--<nb-layout-header fixed>
+    <a href="#" (click)="toggle()">
+      <nb-action icon="menu-outline"></nb-action>
+    </a>
+    <h3 class="ml-4">{{ title }}</h3>
+</nb-layout-header>
+  <nb-layout-header subheader>
+    <button nbButton status="primary" (click)="open()">
+      <nb-icon icon="plus-outline"></nb-icon>
+    </button>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <b *ngIf="loading$ | async">Cargando...</b>
+    <nb-list *ngFor="let s of theme$ | async">
+      <nb-list-item>
+        <div>
+          <p>
+            {{ s.idsala }}<strong class="ml-4" *ngFor="let t of s.tema">{{ t }}h</strong>
+            <nb-icon icon="clock-outline" class="mt-2"></nb-icon>
+          </p>
+          <p>
+            Participantes: {{ s.id }}
+            <nb-icon icon="person-outline" class="ml-4"></nb-icon>
+          </p>
+
+          <br />
+
+          <a nbButton status="info" [routerLink]="['/join', s.id]" (click)="join(s.id)"
+            >Unirse</a
+          >
+          <button nbButton status="info" (click)="viewTheme(s.id)" class="mt-2">
+            Ver temario<nb-icon icon="eye-outline"></nb-icon>
+          </button>
+        </div>
+      </nb-list-item>
+    </nb-list>
+  </nb-sidebar>-->
+
+<h1>Ops!, Aun no estas en ninguna sala</h1>
+<p>Unete a una o creala y comienza a estudiar con tus amigos 📚</p>

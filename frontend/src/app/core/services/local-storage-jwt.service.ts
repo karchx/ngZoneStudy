@@ -20,7 +20,7 @@ export class LocalStorageJwtService {
   }
 
   removeItem(): Observable<boolean> {
-    localStorage.removeItem("jwtItem");
+    localStorage.removeItem("jwtToken");
     return of(true);
   }
 }
