@@ -5,16 +5,23 @@ import { RouterModule } from "@angular/router";
 
 import { UsersRoutingModule } from "./users-routing.module";
 import { SignUpComponent } from "./sign-up/sign-up.component";
-import { NebularModule } from "../nebular/nebular.module";
+import {NbButtonModule, NbFormFieldModule, NbIconModule, NbInputModule} from "@nebular/theme";
+
+const NEBULARMODULES = [
+  NbIconModule,
+  NbFormFieldModule,
+  NbInputModule,
+  NbButtonModule
+];
 
 @NgModule({
   declarations: [SignUpComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    NebularModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NEBULARMODULES
   ]
 })
 export class UsersModule {}

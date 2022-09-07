@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ToastrModule } from "ngx-toastr";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { NebularModule } from "./nebular/nebular.module";
+import { NbEvaIconsModule } from "@nebular/eva-icons";
 
 import { AppComponent } from "./app.component";
 import { AppState, ROOT_REDUCER } from "./state/app.state";
@@ -18,6 +18,7 @@ import { UsersEffects } from "./users/users.effects";
 import { NotifyEffects } from "./shared/notify/notify.effects";
 import { ThemeModule } from "./@theme/theme.module";
 import { localStorageSync } from "ngrx-store-localstorage";
+import {NbButtonModule, NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService, NbThemeModule} from "@nebular/theme";
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<AppState>
@@ -25,6 +26,15 @@ export function localStorageSyncReducer(
   return localStorageSync({ keys: ["auth"], rehydrate: true })(reducer);
 }
 const metaReducers: MetaReducer<AppState, any>[] = [localStorageSyncReducer];
+
+const NEBULARMODULES = [
+  NbEvaIconsModule,
+  NbLayoutModule,
+  NbIconModule,
+  NbSidebarModule,
+  NbMenuModule.forRoot(),
+  NbButtonModule
+]
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,13 +44,15 @@ const metaReducers: MetaReducer<AppState, any>[] = [localStorageSyncReducer];
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    NebularModule,
     StoreModule.forRoot(ROOT_REDUCER, { metaReducers }),
     ToastrModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     EffectsModule.forRoot([UsersEffects, NotifyEffects]),
-    ThemeModule
+    ThemeModule,
+    NbThemeModule.forRoot({ name: "default" }),
+    NEBULARMODULES
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [NbSidebarService]
 })
 export class AppModule {}
