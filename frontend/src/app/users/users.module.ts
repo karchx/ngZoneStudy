@@ -5,14 +5,14 @@ import { RouterModule } from "@angular/router";
 
 import { UsersRoutingModule } from "./users-routing.module";
 import { SignUpComponent } from "./sign-up/sign-up.component";
-import {NbButtonModule, NbFormFieldModule, NbIconModule, NbInputModule} from "@nebular/theme";
-
-const NEBULARMODULES = [
-  NbIconModule,
+import {
+  NbButtonModule,
   NbFormFieldModule,
-  NbInputModule,
-  NbButtonModule
-];
+  NbIconModule,
+  NbInputModule
+} from "@nebular/theme";
+
+const NEBULARMODULES = [NbIconModule, NbFormFieldModule, NbInputModule, NbButtonModule];
 
 @NgModule({
   declarations: [SignUpComponent],

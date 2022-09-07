@@ -1,7 +1,7 @@
 export interface User {
   email: string;
   username: string;
-  password: string;
+  password: string; //TODO: remove password
   id?: number;
 }
 

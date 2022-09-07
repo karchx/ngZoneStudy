@@ -18,7 +18,15 @@ import { UsersEffects } from "./users/users.effects";
 import { NotifyEffects } from "./shared/notify/notify.effects";
 import { ThemeModule } from "./@theme/theme.module";
 import { localStorageSync } from "ngrx-store-localstorage";
-import {NbButtonModule, NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService, NbThemeModule} from "@nebular/theme";
+import {
+  NbButtonModule,
+  NbIconModule,
+  NbLayoutModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbSidebarService,
+  NbThemeModule
+} from "@nebular/theme";
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<AppState>
@@ -34,7 +42,7 @@ const NEBULARMODULES = [
   NbSidebarModule,
   NbMenuModule.forRoot(),
   NbButtonModule
-]
+];
 
 @NgModule({
   declarations: [AppComponent],
