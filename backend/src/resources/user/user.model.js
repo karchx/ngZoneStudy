@@ -57,4 +57,10 @@ userSchema.methods.checkPassword = function (password) {
   });
 };
 
+userSchema.set("toJSON", {
+  transform: function(_,ret) {
+    delete ret.password;
+  }
+});
+
 export const User = mongoose.model("user", userSchema);
