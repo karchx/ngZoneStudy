@@ -27,6 +27,7 @@ import {
   NbSidebarService,
   NbThemeModule
 } from "@nebular/theme";
+import { RoomEfects } from "./room/room.effects";
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<AppState>
@@ -55,7 +56,7 @@ const NEBULARMODULES = [
     StoreModule.forRoot(ROOT_REDUCER, { metaReducers }),
     ToastrModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
-    EffectsModule.forRoot([UsersEffects, NotifyEffects]),
+    EffectsModule.forRoot([UsersEffects, NotifyEffects, RoomEfects]),
     ThemeModule,
     NbThemeModule.forRoot({ name: "default" }),
     NEBULARMODULES

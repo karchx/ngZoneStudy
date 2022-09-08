@@ -7,3 +7,7 @@ export interface Room {
   updatedAt: Date;
   _id?: string;
 }
+
+export interface RoomResponse {
+  rooms: Room[];
+}

@@ -1,4 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { Room } from "../core/models/room";
+import { AppState } from "../state/app.state";
+import { roomActions } from "./room.actions";
+import { selectRoomEntities } from "./room.selectors";
 
 @Component({
   selector: "app-room",
@@ -6,7 +12,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./room.component.scss"]
 })
 export class RoomComponent implements OnInit {
-  constructor() {}
+  rooms$: Observable<Room[]> = new Observable();
 
-  ngOnInit(): void {}
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(roomActions.loadRooms());
+    this.rooms$ = this.store.select(selectRoomEntities);
+  }
 }
