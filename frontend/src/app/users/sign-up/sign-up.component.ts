@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { User } from "src/app/core/models/user";
+import { NewUser } from "src/app/core/models/user";
 import { AppState } from "src/app/state/app.state";
 import { authActions } from "../users.actions";
 
@@ -52,7 +52,7 @@ export class SignUpComponent implements OnInit {
   }
 
   submit() {
-    const payload: User = {
+    const payload: NewUser = {
       ...this.signupForm.value
     };
 

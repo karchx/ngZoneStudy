@@ -20,7 +20,6 @@ export const authInitialState: AuthState = {
   user: {
     username: "",
     email: "",
-    password: ""
   },
   token: ""
 };
