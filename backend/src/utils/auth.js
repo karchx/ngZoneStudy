@@ -67,10 +67,11 @@ export const signin = async (req, res) => {
 };
 
 export const protect = async (req, res, next) => {
+  const unauthorized = { message: "Unauthorized, missing token" };
   const bearer = req.headers.authorization;
 
   if (!bearer || !bearer.startsWith("Bearer ")) {
-    return res.status(401).end();
+    return res.status(401).send(unauthorized);
   }
 
   const token = bearer.split("Bearer ")[1].trim();
