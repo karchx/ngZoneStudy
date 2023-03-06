@@ -36,7 +36,7 @@
   </nb-layout-header>
 
   <!--SIDEBAR-->
-  <nb-sidebar>
+  <nb-sidebar *ngIf="isLoggedIn$ | async">
     <nb-menu [items]="menu"></nb-menu>
   </nb-sidebar>
 
